@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibXV6bmFtaWFuIiwiYSI6ImNtNXBsc2xjcDAyaWkybm9wZ
 // the specific token that is used in my mapbox file
 const map = new mapboxgl.Map({
     container: "my-map 2",
-    style: "mapbox://styles/muznamian/cm6zwja9f00cj01qq433y5umu",
+    style: "mapbox://styles/muznamian/cm72f3ui9007x01s8ggjc1pte",
     // the style url from the mapbox id
     center: [-79.39, 43.66],
     // the lng and lat values that are used as central mercator 
@@ -10,25 +10,48 @@ const map = new mapboxgl.Map({
 });
 
 
-map.on('load',()=>{
+map.on('load', () => {
 
-    // map.addSource('uoftfiles', {
-    //     type: 'geojson',
-    //     data: 'c:\Users\mianmuzn\Downloads\uoftfiles.geojson'
-    // }); 
+    map.addSource('uoftfiles', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/muznamian/lab-2-/main/uoftfiles.geojson'
+    });
 
-});
+    //  the above is geojson link 
+    map.addLayer({
+        'id': 'location points',
+        'type': 'circle',
+        'source': 'uoftfiles',
+        'paint': {
+            'circle-radius': 5,
+            'circle-color': '#FF0000'
+        }
+
+    });
+
+    //map box tile stuff
 
 
-// //  the above is geojson link 
-// map.addLayer({
-//     'id': 'location points',
-//     'type': 'circle',
-//     'source': 'uoftfiles',
-//     'paint': {
-//         'circle-radius': 5,
-//         'circle-color': '#007cbf})
-  
+    //Add a data source from a Mapbox tileset
+    map.addSource('queensparkpoints', { // my own source ID name 
+        'type': 'vector',
+        'url': 'mapbox://muznamian.c4f728f9', // the mapbox tileset ID it shows places I have visited around Queens park 
+    });
+    map.addLayer({
+        'id': 'queenspark', // Create your own layer ID, I used Queens park and locations nearby 
+        'type': 'circle', // how the points will appear
+        'source': 'queensparkpoints', // Must match source ID from addSource Method
+        'paint': {
+            'fill-color': '#FFFF00', // the color and hex code 
+            'fill-opacity': 0.4,
+            'fill-outline-color': 'black'
+        },
+        'source-layer': 'points_2-acj9mf' // Tileset NAME (diff to ID), get this from mapbox
+        //tileset page
+    });
+})
+
+
 
 
 // map.on('load', () => {
@@ -50,32 +73,7 @@ map.on('load',()=>{
 
 
 
-//   map box tile stuff
 
-
-//   Add a data source from a Mapbox tileset
-//             map.addSource('queens park points', { // Create your own source ID
-//                 'type': 'vector',
-//                 'url': 'https://studio.mapbox.com/tilesets/muznamian.c4f728f9' // Update to your mapbox tileset ID
-//             });
-//             map.addLayer({
-//                 'id': 'queenspark', // Create your own layer ID
-//                 'type': 'fill', // how the points will appear
-//                 'source': 'uoftfiles', // Must match source ID from addSource Method
-//                 'paint': {
-//                     'fill-color': '#9c7474', // Test alternative colours and style properties
-//                     'fill-opacity': 0.4,
-//                     'fill-outline-color': 'black'
-//                 },
-//                 'source-layer': 'points_2-acj9mf' // Tileset NAME (diff to ID), get this from mapbox
-// tileset page
-//             },
-//                 'uoft-buildings' // Drawing order - places layer below points
-// // Here the addlayer method takes 2 arguments (the layer as an object and a
-// string for another layer's name). If the other layer already exists, the new layer
-// will be drawn before that one
-// );
-//         Save your edits and update your repository.
 
 
 
