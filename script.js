@@ -1,3 +1,4 @@
+//test
 mapboxgl.accessToken = 'pk.eyJ1IjoibXV6bmFtaWFuIiwiYSI6ImNtNXBsc2xjcDAyaWkybm9wZXFuMjNzMTQifQ.0ATJsQJDSlSrpNrQpdMq0Q';
 // the specific token that is used in my mapbox file
 const map = new mapboxgl.Map({
