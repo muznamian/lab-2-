@@ -42,9 +42,9 @@ map.on('load', () => {
         'type': 'circle', // how the points will appear
         'source': 'queensparkpoints', // Must match source ID from addSource Method
         'paint': {
-            'fill-color': '#FFFF00', // the color and hex code 
-            'fill-opacity': 0.4,
-            'fill-outline-color': 'black'
+            'circle-color': '#964B00', // the color and hex code 
+            'circle-opacity': 0.4,
+            'circle-outline-color': 'black'
         },
         'source-layer': 'points_2-acj9mf' // Tileset NAME (diff to ID), get this from mapbox
         //tileset page
