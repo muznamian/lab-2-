@@ -42,7 +42,7 @@ map.on('load', () => {
         'type': 'circle', // how the points will appear
         'source': 'queensparkpoints', // Must match source ID from addSource Method
         'paint': {
-            'circle-color': '#964B00', // the color and hex code 
+            'circle-color': '#000000', // the color and hex code 
             'circle-opacity': 0.4,
             'circle-outline-color': 'black'
         },
